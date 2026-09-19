@@ -200,6 +200,7 @@ h2 em,h1 em,.big em{font-style:normal;color:var(--acid)}
 .offer .eyebrow{margin-bottom:10px}
 .offer-inline{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:clamp(24px,5vw,72px)}
 .offer-inline ul{margin:0}
+.price-note{margin-top:12px;max-width:260px;font-size:13.5px;line-height:1.5;color:var(--muted)}
 .offer-inline .btn{white-space:nowrap}
 .price{font-family:var(--display);font-size:52px;font-weight:600;letter-spacing:-.03em;line-height:1}
 .price span{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-left:6px}
