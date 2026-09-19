@@ -10,5 +10,5 @@ Run locally:
 
     python3 -m http.server 4180 --directory .
 
-Contact form opens a mailto draft; nothing is stored. No analytics. `robots.txt` blocks indexing until launch.
+Contact form opens a mailto draft; nothing is stored. No analytics. Custom domain psios.com via `CNAME`; GitHub Pages deploys on push to `main`.
 The existing Astro site at `~/Projects/psios-com` (and its `/game` route) is untouched.
