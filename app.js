@@ -1,6 +1,14 @@
 // psios.com — no framework, no build step.
 
+// Stripe Payment Link for the $1,500 pilot (Stripe Dashboard → Payment Links).
+// Sent to clients after the scope is agreed; empty hides the pay link on the site.
+const STRIPE_PAYMENT_LINK = '';
+
 const $ = (s, r = document) => r.querySelector(s);
+
+if (STRIPE_PAYMENT_LINK) {
+  document.querySelectorAll('.js-pay').forEach((a) => { a.href = STRIPE_PAYMENT_LINK; a.hidden = false; });
+}
 // Mobile nav
 const toggle = $('.nav-toggle');
 const nav = $('#site-nav');
