@@ -16,8 +16,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
-  <link rel="stylesheet" href="style.css?v=4">
-  <script src="app.js?v=3" defer></script>
+  <link rel="stylesheet" href="style.css?v=5">
+  <script src="app.js?v=4" defer></script>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
@@ -35,6 +35,7 @@
     <nav id="site-nav" class="nav" aria-label="Main navigation">
       <a href="#services">Services</a>
       <a href="#case-study">Case study</a>
+      <a href="#pricing">Pricing</a>
       <a href="#founder">Founder</a>
       <a class="btn btn-acid btn-sm" href="#contact">Start a conversation</a>
     </nav>
@@ -49,13 +50,13 @@
         <h1 id="hero-title">Tangled work in.<br><em>Clean workflow</em> out.</h1>
         <p class="lead">Three fixed-price AI installs for owner-led businesses of 3–15 people: a private AI assistant on a computer you own, a phone line that answers 24/7, or a lead follow-up system that never lets an inquiry go cold. You approve anything that touches a customer. Silicon Valley based, delivered entirely online.</p>
         <div class="actions">
-          <a class="btn btn-acid" href="#contact">Start a conversation <i aria-hidden="true">→</i></a>
+          <a class="btn btn-acid" href="#pricing">Start with a $495 audit <i aria-hidden="true">→</i></a>
           <a class="link" href="#services">See the services</a>
         </div>
       </div>
 
       <figure class="hero-art" aria-labelledby="hero-fig">
-        <svg class="gate-diagram" viewBox="0 0 640 400" role="img" aria-describedby="hero-fig">
+        <svg class="gate-diagram" viewBox="0 0 640 400" role="img" aria-label="Tangled work goes in, clean workflows come out" aria-describedby="hero-fig">
           <defs>
             <g id="node"><circle r="7" fill="#111213" stroke="#1769ff" stroke-width="2"/></g>
           </defs>
@@ -101,7 +102,7 @@
       <div class="split-heading">
         <div>
           <p class="eyebrow">Services</p>
-          <h2>Three installs.<br><span class="dim">Pick one. $1,500 each.</span></h2>
+          <h2>Three installs.<br><span class="dim">Pick one. $1,495 each.</span></h2>
         </div>
         <p class="section-intro">Each one is a bounded build in tools you already own, tested on your real cases, and handed over with a one-page manual — so your team runs it without me.</p>
       </div>
@@ -140,23 +141,36 @@
           <p class="card-proof"><b>Best for:</b> agencies, consultants, and service businesses that lose leads to a busy week.</p>
         </article>
       </div>
-      <div class="offer offer-inline">
+      <div id="pricing" class="offer offer-inline">
         <div>
           <p class="eyebrow">Pricing</p>
-          <p class="price">$1,500 <span>per install</span></p>
-          <p class="price-note">Pick one of the three above. Each is its own two-week pilot at a fixed $1,500. Want a second one later? Same price, same terms.</p>
+          <p class="price">$495 <span>to start</span></p>
+          <p class="price-note">Every engagement starts with a written audit. If you go ahead with an install, the full $495 comes off the price.</p>
         </div>
         <ul>
-          <li>Fixed scope, fixed fee, agreed in writing — no day rates, no surprises</li>
+          <li>Fixed scope, fixed fee, agreed in writing: no day rates, no surprises</li>
           <li>Built in the tools you already own; no new vendor, no lock-in</li>
-          <li>Tested on your real cases, then a recorded walkthrough, handover, and 14 days of fixes</li>
-          <li>Entirely remote: video calls, screen shares, and email — no travel, no site visits</li>
+          <li>Entirely remote and mostly asynchronous: recorded walkthroughs and email, no travel, no site visits</li>
+          <li>Limited to four audits a month, so every client gets Derek's full attention</li>
         </ul>
-        <div class="offer-actions">
-          <a class="btn btn-acid" href="#contact">Choose your install <i aria-hidden="true">→</i></a>
-          <a class="link js-pay" href="#contact" hidden>Already spoke with Derek? Pay for your pilot</a>
-        </div>
       </div>
+      <ol class="flow flow-row" aria-label="How an engagement works">
+        <li>
+          <span>STEP 01</span>
+          <div><b>AI Workflow Audit: $495</b><small>Pay online, fill in a short intake form, and send a 5-minute screen recording of the work you want off your plate. Within 5 business days you get a recorded walkthrough and a one-page plan: the top three automations, the tools, the expected monthly savings, and a fixed install quote.</small></div>
+          <a class="btn btn-acid btn-sm js-pay-audit" href="#contact">Book an audit <i aria-hidden="true">→</i></a>
+        </li>
+        <li>
+          <span>STEP 02</span>
+          <div><b>Install: $1,495 ($1,000 after audit credit)</b><small>One of the three installs above, built and tested on your real cases in 10 business days, handed over with a recorded walkthrough and a one-page manual, plus 14 days of fixes by email.</small></div>
+          <a class="link js-pay" href="#contact" hidden>Had your audit? Pay for your install</a>
+        </li>
+        <li>
+          <span>OPTIONAL</span>
+          <div><b>Office hours: $195</b><small>Prefer to talk it through? A 45-minute video call with Derek, for questions or a second opinion on an AI plan. Two slots a week.</small></div>
+          <a class="link js-pay-hours" href="#contact">Ask about office hours</a>
+        </li>
+      </ol>
     </section>
 
     <!-- CASE STUDY -->
@@ -190,6 +204,43 @@
       </div>
     </section>
 
+    <!-- ALSO FROM PSIOS -->
+    <section id="more" class="section" aria-labelledby="more-title">
+      <div class="split-heading">
+        <div>
+          <p class="eyebrow">Also from Psios</p>
+          <h2 id="more-title">Learn it, measure it,<br><span class="dim">or have it built.</span></h2>
+        </div>
+        <p class="section-intro">Psios is one company with three doors. Pick the one that fits how you like to work.</p>
+      </div>
+      <div class="cards three">
+        <article>
+          <span class="num">AI GUIDE TO BUSINESS</span>
+          <h3>Watch a real business get built with AI</h3>
+          <p class="card-lead">Derek is building one real product from idea to revenue using AI at every step, in public, with the real numbers. The course and the daily videos are the same work.</p>
+          <p><a class="link" href="https://aiguidetobusiness.com">aiguidetobusiness.com</a></p>
+        </article>
+        <article>
+          <span class="num">AGILE VITALS</span>
+          <h3>A free health check for software teams</h3>
+          <p class="card-lead">Fifteen questions, about four minutes. Score flow, quality, predictability, morale, and stakeholder trust, and see where to start.</p>
+          <p><a class="link" href="https://agilevitals.com">agilevitals.com</a></p>
+        </article>
+        <article>
+          <span class="num">THE BUILD LOG</span>
+          <h3>One email a week, with the real numbers</h3>
+          <p class="card-lead">What got built, what it cost, what sold, and what didn't, across all three Psios brands. No hype, unsubscribe anytime.</p>
+          <form id="buildlog-form" class="buildlog" novalidate hidden>
+            <label for="buildlog-email" class="sr-only">Email address</label>
+            <input id="buildlog-email" name="email" type="email" autocomplete="email" required placeholder="you@company.com">
+            <button class="btn btn-acid btn-sm" type="submit">Join the Build Log</button>
+            <p id="buildlog-status" role="status"></p>
+          </form>
+          <p class="card-proof js-buildlog-soon">Launching soon. Email <a href="mailto:derek@psios.com?subject=Build%20Log">derek@psios.com</a> to be on the first issue.</p>
+        </article>
+      </div>
+    </section>
+
     <!-- FOUNDER -->
     <section id="founder" class="section founder">
       <figure class="founder-photo">
@@ -199,7 +250,7 @@
       <div class="founder-copy">
         <p class="eyebrow">The founder</p>
         <h2>Built by someone who has <em>done the work.</em></h2>
-        <p class="lead">Derek Beda is a Silicon Valley technology leader with more than thirty years building products and leading engineering teams, including work at <strong>Apple</strong> and <strong>Sony</strong>. Psios is founder-led: you work with Derek directly, from Morgan Hill, California — over the internet, wherever you are.</p>
+        <p class="lead">Derek Beda is a Silicon Valley technology leader with more than thirty years building products and leading engineering teams, including work at <strong>Gap</strong>, <strong>AMD</strong>, and <strong>PayPal</strong>. Psios is founder-led: you work with Derek directly, from Morgan Hill, California — over the internet, wherever you are.</p>
       </div>
     </section>
 
@@ -208,7 +259,7 @@
       <div class="contact-copy">
         <p class="eyebrow">Get in touch</p>
         <h2>What should<br>we build <em>next?</em></h2>
-        <p class="section-intro">Tell Derek which of the three you're thinking about, and what a good outcome looks like. You'll get a straight answer on fit — not a sales sequence.</p>
+        <p class="section-intro">Not sure the audit is right for you? Tell Derek which of the three you're thinking about and what a good outcome looks like. You'll get a straight answer on fit, not a sales sequence.</p>
         <a class="email" href="mailto:derek@psios.com">derek@psios.com</a>
         <p class="locale">Silicon Valley, California, USA<br>Consulting is fully remote — video, screen share, and email. No in-person engagements.</p>
       </div>
@@ -237,7 +288,7 @@
       <img class="brand-mark" src="assets/psios-mark.svg" width="300" height="300" alt="">
       <span class="brand-word">Psios<small>LLC</small></span>
     </a>
-    <span class="foot-tag">AI workflow consulting · Game development · Silicon Valley, California, USA · Remote only</span>
+    <span class="foot-tag">AI workflow consulting · <a href="https://aiguidetobusiness.com">AI Guide to Business</a> · <a href="https://agilevitals.com">Agile Vitals</a> · Game development · Remote only</span>
     <div class="foot-legal">© 2026 Psios LLC <a href="privacy.html">Privacy</a></div>
   </footer>
 </body>
