@@ -1,13 +1,46 @@
 // psios.com — no framework, no build step.
 
-// Stripe Payment Link for the $1,500 pilot (Stripe Dashboard → Payment Links).
-// Sent to clients after the scope is agreed; empty hides the pay link on the site.
-const STRIPE_PAYMENT_LINK = '';
+// Stripe Payment Links (Stripe Dashboard → Payment Links). TEST MODE ONLY until Derek says go:
+// test links look like https://buy.stripe.com/test_... Empty = the button falls back to #contact.
+const STRIPE_LINKS = {
+  audit: '',   // $495 AI Workflow Audit; after payment redirect to an intake form
+  install: '', // $1,000 install balance (audit credit applied); shown only to audit clients
+  hours: '',   // $195 office hours (or a Cal.com paid booking link)
+};
+// Build Log signup endpoint (our own Cloudflare Worker). Empty = form hidden, "launching soon" shown.
+const SUBSCRIBE_URL = '';
 
 const $ = (s, r = document) => r.querySelector(s);
+const isStripe = (u) => /^https:\/\/buy\.stripe\.com\/[A-Za-z0-9_]+$/.test(u);
 
-if (STRIPE_PAYMENT_LINK) {
-  document.querySelectorAll('.js-pay').forEach((a) => { a.href = STRIPE_PAYMENT_LINK; a.hidden = false; });
+function wirePay(selector, url, label) {
+  if (!url || !isStripe(url)) return;
+  document.querySelectorAll(selector).forEach((a) => {
+    a.href = url;
+    a.hidden = false;
+    if (label) a.firstChild.textContent = label + ' ';
+  });
+}
+wirePay('.js-pay-audit', STRIPE_LINKS.audit, 'Buy the audit');
+wirePay('.js-pay', STRIPE_LINKS.install);
+wirePay('.js-pay-hours', STRIPE_LINKS.hours, 'Book office hours');
+
+// Build Log signup
+const buildlog = $('#buildlog-form');
+if (SUBSCRIBE_URL && buildlog) {
+  buildlog.hidden = false;
+  document.querySelectorAll('.js-buildlog-soon').forEach((el) => (el.hidden = true));
+  buildlog.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const status = $('#buildlog-status');
+    const email = $('#buildlog-email').value.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { status.textContent = 'Please enter a valid email address.'; return; }
+    status.textContent = 'Joining…';
+    try {
+      const res = await fetch(SUBSCRIBE_URL, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ email, source: 'psios', intent: 'build-log' }) });
+      status.textContent = res.ok ? 'Done. Check your inbox to confirm.' : 'Something went wrong. Please try again.';
+    } catch { status.textContent = 'Network problem. Please try again.'; }
+  });
 }
 // Mobile nav
 const toggle = $('.nav-toggle');
