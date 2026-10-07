@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Course dashboard — Ship a Roblox Game in 30 Days</title>
+  <meta name="description" content="All thirty lessons grouped by week, with your progress. Day 1 is free to read.">
+  <meta name="theme-color" content="#111213">
+  <link rel="canonical" href="https://psios.com/game-course/dashboard.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/psios-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../style.css?v=5">
+  <link rel="stylesheet" href="course.css?v=1">
+  <script src="dashboard.js?v=1" type="module" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <a class="brand" href="../" aria-label="Psios LLC home">
+      <img class="brand-mark" src="../assets/psios-mark.svg" width="300" height="300" alt="">
+      <span class="brand-word">Psios<small>LLC</small></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Open menu">
+      <span></span><span></span>
+    </button>
+    <nav id="site-nav" class="nav" aria-label="Main navigation">
+      <a href="./">Course home</a>
+      <a href="day/1/">Day 1 (free)</a>
+      <a class="btn btn-acid btn-sm" href="./#pricing">Enrol</a>
+    </nav>
+  </header>
+
+  <main id="main" class="section">
+    <div class="dash-head">
+      <div>
+        <p class="eyebrow">Course dashboard</p>
+        <h2>Thirty days,<br><span class="dim">four weeks, one game.</span></h2>
+      </div>
+      <div class="progress">
+        <div class="progress-bar"><i id="progress-fill"></i></div>
+        <p class="progress-label" id="progress-label">0 of 30 complete</p>
+      </div>
+    </div>
+
+    <div id="weeks"></div>
+
+    <noscript>
+      <p class="section-intro" style="margin-top:32px">Progress tracking needs JavaScript, but every lesson page works without it. <a class="link" href="day/1/">Start with Day 1</a>.</p>
+    </noscript>
+
+    <p class="dash-note">Progress is saved in this browser only — it is not sent anywhere and will not follow you to another device. <button type="button" id="reset-progress" class="link" style="background:none;border:0;border-bottom:1px solid var(--line-strong);padding:0 0 3px;cursor:pointer">Reset progress</button></p>
+  </main>
+
+  <footer class="foot">
+    <a class="brand" href="../" aria-label="Psios LLC home">
+      <img class="brand-mark" src="../assets/psios-mark.svg" width="300" height="300" alt="">
+      <span class="brand-word">Psios<small>LLC</small></span>
+    </a>
+    <span class="foot-tag">Ship a Roblox Game in 30 Days · <a href="./">Course home</a> · <a href="../">Psios consulting</a></span>
+    <div class="foot-legal">© 2026 Psios LLC <a href="../privacy.html">Privacy</a></div>
+  </footer>
+  <p class="disclaimer">Roblox, Roblox Studio, and Luau are trademarks of Roblox Corporation. Claude and Claude Code are trademarks of Anthropic, PBC. This course is an independent educational product of Psios LLC and is not affiliated with, endorsed by, or sponsored by Roblox Corporation or Anthropic, PBC.</p>
+</body>
+</html>
