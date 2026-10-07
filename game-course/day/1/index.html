@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Day 1: Set up Roblox Studio and Claude Code — Ship a Roblox Game in 30 Days</title>
+  <meta name="description" content="Install both tools, point Claude Code at a real Studio project, and make a script you did not type change something you can see.">
+  <meta name="theme-color" content="#111213">
+  <meta property="og:title" content="Day 1: Set up Roblox Studio and Claude Code">
+  <meta property="og:description" content="Install both tools, point Claude Code at a real Studio project, and make a script you did not type change something you can see.">
+  <meta property="og:type" content="article">
+  <link rel="canonical" href="https://psios.com/game-course/day/1/">
+  <link rel="icon" type="image/svg+xml" href="../../../assets/psios-mark.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700&family=Geist:wght@400;500;600&family=Geist+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../../../style.css?v=5">
+  <link rel="stylesheet" href="../../course.css?v=1">
+  <script src="../../lesson.js?v=1" type="module" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <a class="brand" href="../../../" aria-label="Psios LLC home">
+      <img class="brand-mark" src="../../../assets/psios-mark.svg" width="300" height="300" alt="">
+      <span class="brand-word">Psios<small>LLC</small></span>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="../../">Course</a>
+      <a href="../../dashboard.html">All lessons</a>
+      <a class="btn btn-acid btn-sm" href="../../#pricing">Enrol</a>
+    </nav>
+  </header>
+
+  <main id="main" class="lesson">
+    <nav class="lesson-nav" aria-label="Lesson navigation">
+      <a href="../../dashboard.html">← All lessons</a>
+      <a href="../../dashboard.html">Week 1 · Foundations</a>
+      <a href="../2/">Day 2 →</a>
+    </nav>
+
+    <p class="eyebrow"><span>Day 1 of 30</span><span class="sep"></span><span>Free lesson</span></p>
+    <h1>Set up Roblox Studio and Claude Code</h1>
+    <p class="summary">Install both tools, point Claude Code at a real Studio project, and make a script you did not type change something you can see.</p>
+
+    <div class="video-frame">Lesson video — recording in progress</div>
+
+    <section class="build-task">
+      <p class="eyebrow">Today's build task</p>
+      <p>Claude Code writes a script that turns a part a different colour when a player touches it. You run it in Studio and watch it work.</p>
+    </section>
+
+    <div class="lesson-body">
+<h2>What today is actually for</h2>
+<p>Day 1 has one job: prove the loop works. Not the game loop — the <em>work</em> loop. You write an instruction in one window, and something changes in another window without you touching it. Everything in the next twenty-nine days is that same motion repeated at larger and larger scale, so it is worth half an hour to confirm it works on your machine before you depend on it.</p>
+<p>Budget forty minutes. Most of it is downloads.</p>
+
+<h2>Install Roblox Studio</h2>
+<p>Studio is free and runs on Windows 10 or later and macOS 11 or later. Get it from <code>create.roblox.com</code> — you sign in with a Roblox account, and if you don't have one, make it now with an email you'll still have in a month. You will publish from this account on Day 28, so don't use a throwaway.</p>
+<ol>
+  <li>Sign in at <code>create.roblox.com</code> and download Studio.</li>
+  <li>Open it and create a new place from the <strong>Baseplate</strong> template. Not Classic Baseplate, not Village — the plain one, because an empty world is easier to see changes in.</li>
+  <li>Save it locally as <code>day1.rbxl</code> somewhere you'll find it again.</li>
+</ol>
+<p>If Studio won't launch on macOS, it is almost always Gatekeeper: open System Settings, go to Privacy &amp; Security, and allow the Roblox app explicitly. On Windows, the usual culprit is an antivirus tool quarantining the installer mid-download.</p>
+
+<h2>Install Claude Code</h2>
+<p>Claude Code is a terminal tool. If you have Node 18 or later:</p>
+<pre><code>npm install -g @anthropic-ai/claude-code
+claude</code></pre>
+<p>The first run walks you through signing in. You need a Claude subscription or API credit — this is the one unavoidable cost of the course beyond your own time.</p>
+<p>Make a folder for the game and start Claude Code inside it. Keep this separate from where you saved the <code>.rbxl</code> file for now; on Day 2 you'll connect the two properly with Rojo, and it's clearer if you can see them as separate things first.</p>
+<pre><code>mkdir ~/roblox-30-days
+cd ~/roblox-30-days
+claude</code></pre>
+
+<h2>The first instruction</h2>
+<p>Here's the part that matters. In Claude Code, ask for this:</p>
+<pre><code>Write a Roblox Luau script that makes a part change to a random
+colour every time a player touches it. Put it in a file called
+TouchColour.server.lua and explain which Studio container it
+belongs in and why.</code></pre>
+<p>You will get back something close to this, plus an explanation:</p>
+<pre><code>local part = script.Parent
+
+local debounce = false
+
+part.Touched:Connect(function(hit)
+	local character = hit.Parent
+	local humanoid = character and character:FindFirstChildOfClass("Humanoid")
+	if not humanoid or debounce then
+		return
+	end
+
+	debounce = true
+	part.Color = Color3.fromRGB(
+		math.random(0, 255),
+		math.random(0, 255),
+		math.random(0, 255)
+	)
+	task.wait(0.2)
+	debounce = false
+end)</code></pre>
+<p>Now put it in Studio by hand, this once. Insert a Part into the Workspace, anchor it so it doesn't fall, add a Script inside the part, and paste the code in. Press Play. Walk your avatar into the part. It changes colour.</p>
+<p>That is the loop, proven. From Day 2 onward you will never paste code by hand again — Rojo will sync it — but today you want to have seen both halves with your own eyes so that when the pipeline breaks later you know what each end is supposed to look like.</p>
+
+<h2>Three things worth noticing</h2>
+<p>Read what the agent wrote, because three details in it will come back repeatedly:</p>
+<ul>
+  <li><strong>The debounce.</strong> <code>Touched</code> fires many times per second while a body part is in contact — once per limb, sometimes dozens of times for a single step. Nearly every "my script ran 40 times" bug in Roblox is a missing debounce.</li>
+  <li><strong>The Humanoid check.</strong> <code>Touched</code> fires for anything that touches the part, including other parts falling on it. Checking for a Humanoid is how you ask "was that actually a player?"</li>
+  <li><strong>The <code>.server.lua</code> suffix.</strong> That tells Rojo, on Day 2, that this code runs on the server and not on the player's machine. Getting that distinction wrong is the single most common source of both broken features and exploitable games, and all of Day 4 and Day 12 are about it.</li>
+</ul>
+<p>Ask Claude Code to explain any of those in more depth right now if you want. Using the agent as a tutor on the code it just wrote is a habit worth forming on Day 1 — it is faster than searching, and it is grounded in the exact code in front of you.</p>
+
+<h2>Ask a second question</h2>
+<p>Before you close the terminal, try one thing that fails interestingly:</p>
+<pre><code>What happens to this script if a player rejoins the game?
+Does the colour persist? Why or why not?</code></pre>
+<p>The answer is no, and the reason — nothing is stored anywhere outside the running server — is the entire premise of Day 13 on DataStores. You are not fixing it today. You are building the instinct to ask "and what happens when…" before the agent has to be told.</p>
+
+<h2>Done when</h2>
+<ul>
+  <li>Roblox Studio opens a Baseplate place and you can press Play and walk around.</li>
+  <li>Claude Code runs in a project folder and answers you.</li>
+  <li>A part in your place changes colour when your avatar touches it, from code you did not write.</li>
+  <li>You can say out loud why the debounce is there.</li>
+</ul>
+<p>Tomorrow: Rojo and Git, so your code lives in real files under version control instead of trapped in a binary <code>.rbxl</code> — which is the thing that makes an agent crew possible at all.</p>
+
+</div>
+
+    <div class="lesson-done">
+      <button class="check" type="button" data-day="1" aria-pressed="false" aria-label="Mark day 1 complete"></button>
+      <span>Mark Day 1 complete</span>
+    </div>
+
+    <nav class="lesson-nav" style="margin:36px 0 0" aria-label="Lesson navigation">
+      <span></span>
+      <a href="../../dashboard.html">All lessons</a>
+      <a href="../2/">Day 2 →</a>
+    </nav>
+  </main>
+
+  <footer class="foot">
+    <a class="brand" href="../../../" aria-label="Psios LLC home">
+      <img class="brand-mark" src="../../../assets/psios-mark.svg" width="300" height="300" alt="">
+      <span class="brand-word">Psios<small>LLC</small></span>
+    </a>
+    <span class="foot-tag">Ship a Roblox Game in 30 Days · <a href="../../">Course home</a></span>
+    <div class="foot-legal">© 2026 Psios LLC <a href="../../../privacy.html">Privacy</a></div>
+  </footer>
+  <p class="disclaimer">Roblox, Roblox Studio, and Luau are trademarks of Roblox Corporation. Claude and Claude Code are trademarks of Anthropic, PBC. This course is an independent educational product of Psios LLC and is not affiliated with, endorsed by, or sponsored by Roblox Corporation or Anthropic, PBC.</p>
+</body>
+</html>
